@@ -4,68 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Service Notice</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #ffffff;
-      --fg: #1f2937;
-      --muted: #6b7280;
-      --panel: #f3f4f6;
-      --accent: #b91c1c;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111827;
-        --fg: #f9fafb;
-        --muted: #9ca3af;
-        --panel: #1f2937;
-        --accent: #f87171;
-      }
-    }
-    html, body {
-      margin: 0;
-      height: 100%;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-    }
-    .wrap {
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 1.5rem;
-    }
-    .card {
-      max-width: 680px;
-      width: 100%;
-      background: var(--panel);
-      border-radius: 12px;
-      padding: 1.5rem 1.25rem;
-      box-sizing: border-box;
-    }
-    h1 {
-      margin: 0 0 0.75rem;
-      line-height: 1.2;
-      font-size: 1.7rem;
-    }
-    p {
-      margin: 0.5rem 0;
-      line-height: 1.5;
-    }
-    .status {
-      display: inline-block;
-      margin-bottom: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-    .small {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <main class="wrap">
@@ -83,35 +22,6 @@
       </p>
     </section>
   </main>
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search);
-      const mode = (params.get('mode') || 'maintenance').toLowerCase();
-      const site = params.get('site') || 'this service';
-
-      const status = document.getElementById('status');
-      const headline = document.getElementById('headline');
-      const message1 = document.getElementById('message1');
-      const message2 = document.getElementById('message2');
-      const detail = document.getElementById('detail');
-
-      if (mode === 'blocked') {
-        document.title = 'Request Rejected';
-        status.textContent = 'Request Rejected';
-        headline.textContent = 'Your request was blocked by security policy.';
-        message1.textContent = 'This request did not meet access requirements for ' + site + '.';
-        message2.textContent = 'If you believe this is an error, contact akrherz@iastate.edu with the request details.';
-        detail.textContent = 'Legitimate users can retry using normal browser access and valid request patterns.';
-        return;
-      }
-
-      document.title = 'Service Temporarily Unavailable';
-      status.textContent = 'Temporary Notice';
-      headline.textContent = site + ' is currently unavailable.';
-      message1.textContent = 'The site is temporarily down for maintenance or an unexpected outage.';
-      message2.textContent = 'Please try again in a few minutes.';
-      detail.textContent = 'If you are an administrator, restore upstream service and remove the redirect/fallback rule when normal operations resume.';
-    })();
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
